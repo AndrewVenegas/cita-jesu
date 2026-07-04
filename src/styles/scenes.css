@@ -1,0 +1,152 @@
+/* ===== Animación de la Gran Rueda ===== */
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Overlay (regalo de vidas) ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(107, 58, 91, 0.35);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* ===== Mini-juego atrapar corazones ===== */
+.catch-area {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 60vh;
+  max-height: 460px;
+  min-height: 340px;
+  background: linear-gradient(180deg, #fff8fc 0%, #ffe9f4 100%);
+  border: 3px solid #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  touch-action: none;
+  cursor: pointer;
+}
+.catch-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  z-index: 3;
+}
+.fall-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  pointer-events: none;
+  will-change: top, left;
+}
+.basket {
+  position: absolute;
+  bottom: 2%;
+  transform: translateX(-50%);
+  font-size: 2.8rem;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 4px rgba(255, 95, 162, 0.4));
+  transition: left 0.06s linear;
+}
+
+/* ===== Ticket ===== */
+.ticket {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(255, 95, 162, 0.35);
+  overflow: hidden;
+  /* borde dentado a los lados con máscara radial */
+  -webkit-mask:
+    radial-gradient(circle at 0 50%, transparent 12px, #000 13px) left,
+    radial-gradient(circle at 100% 50%, transparent 12px, #000 13px) right;
+  -webkit-mask-size: 51% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask:
+    radial-gradient(circle at 0 50%, transparent 12px, #000 13px) left,
+    radial-gradient(circle at 100% 50%, transparent 12px, #000 13px) right;
+  mask-size: 51% 100%;
+  mask-repeat: no-repeat;
+}
+.ticket-top {
+  background: linear-gradient(90deg, var(--pink) 0%, var(--pink-deep) 100%);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 22px;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.ticket-body {
+  padding: 20px 26px 8px;
+  text-align: center;
+}
+.ticket-label {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+.ticket-prize {
+  font-family: var(--font-hand);
+  font-size: 2.1rem;
+  color: var(--pink-deep);
+  line-height: 1.1;
+  margin: 2px 0 14px;
+}
+.ticket-details {
+  text-align: left;
+  display: inline-block;
+  margin: 0 auto 12px;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.ticket-link {
+  display: inline-block;
+  margin: 4px 0 10px;
+  font-size: 0.95rem;
+}
+.ticket-sign {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-top: 4px;
+}
+.ticket-stub {
+  border-top: 2px dashed var(--pink-soft);
+  padding: 10px;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  background: #fff6fb;
+}
+
+/* ===== Mensaje comprobante ===== */
+.proof {
+  background: linear-gradient(180deg, var(--sun) 0%, #ffbe3d 100%);
+  color: #7a4a00;
+  font-weight: 800;
+  padding: 14px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(255, 190, 61, 0.5);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  max-width: 400px;
+}
