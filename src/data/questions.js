@@ -39,7 +39,7 @@ export const questions = [
       { label: '8 de junio', correct: true },
       { label: '18 de junio', correct: false },
       { label: '8 de julio', correct: false },
-      { label: 'la de la Gran Rueda 🎡', correct: false },
+      { label: 'jamás lo olvidaría 🥰', correct: false },
     ],
   },
 ]
@@ -49,6 +49,6 @@ export const wrongMessages = [
   '¡Ayyy no po Jesu! 😭 esa no era…',
   'Mmm… ¿segura segura? 🤨 te falló la memoria',
   '¡Casiii! pero no 😅',
-  'Nooo mi amor, concéntrate 🥺',
+  'Nooo mi amorcito, concéntrate 🥺',
   'Esa dolió 💔 pero te sigo amando',
 ]
