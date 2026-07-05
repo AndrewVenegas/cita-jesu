@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 // Corazones decorativos que suben lento por el fondo 💕
-const EMOJIS = ['💕', '💖', '💗', '🌸', '💘', '🎡', '🩷']
+const EMOJIS = ['💕', '💖', '💗', '🌸', '💘', '🎡']
 
 export default function BgHearts({ count = 14 }) {
   const hearts = useMemo(

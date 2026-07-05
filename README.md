@@ -1,4 +1,4 @@
-# 🎡💕 Jesu, ¿salís conmigo?
+# 🎡💕 Jesu, ¿sales conmigo?
 
 Mini-juego tierno y chistosa para invitar a **Jesu** a **La Gran Rueda Chile**
 (Parque Araucano · presencial · **miércoles 8 de julio**).

@@ -5,9 +5,24 @@ import { questions, wrongMessages } from '../data/questions.js'
 import { useSound } from '../hooks/useSound.js'
 import { useConfetti } from '../hooks/useConfetti.js'
 
+// Baraja un array (Fisher-Yates) sin mutar el original.
+const shuffle = (arr) => {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 // Escena 3: las 3 preguntas de la relación.
 // Nunca puede perder de verdad: al llegar a 0 vidas, se regalan 3 más 💝
 export default function Quiz({ onWin }) {
+  // Barajamos las opciones de cada pregunta una sola vez al montar,
+  // así la correcta no queda siempre primera y el orden se mantiene estable.
+  const [deck] = useState(() =>
+    questions.map((q) => ({ ...q, options: shuffle(q.options) })),
+  )
   const [index, setIndex] = useState(0)
   const [lives, setLives] = useState(3)
   const [locked, setLocked] = useState(null) // índice de opción elegida
@@ -17,7 +32,7 @@ export default function Quiz({ onWin }) {
 
   const { good, bad } = useSound()
   const { burst } = useConfetti()
-  const q = questions[index]
+  const q = deck[index]
 
   const pick = (opt, i) => {
     if (locked !== null || giftLives) return
@@ -90,12 +105,14 @@ export default function Quiz({ onWin }) {
             let bg = '#fff'
             let color = 'var(--pink-deep)'
             let border = '2px solid var(--pink-soft)'
-            if (locked !== null) {
+            // Solo coloreamos la opción ELEGIDA: verde si acertó, rojo si falló.
+            // Nunca revelamos cuál era la correcta cuando se equivoca.
+            if (chosen) {
               if (opt.correct) {
                 bg = 'var(--mint)'
                 color = '#0c6b56'
                 border = '2px solid var(--mint)'
-              } else if (chosen) {
+              } else {
                 bg = '#ffd9d9'
                 color = '#b02a2a'
                 border = '2px solid #ffb0b0'
@@ -118,7 +135,7 @@ export default function Quiz({ onWin }) {
                 }}
               >
                 {opt.label}
-                {locked !== null && opt.correct ? ' ✅' : ''}
+                {chosen && opt.correct ? ' ✅' : ''}
                 {chosen && !opt.correct ? ' ❌' : ''}
               </motion.button>
             )
@@ -172,7 +189,7 @@ export default function Quiz({ onWin }) {
               <p className="subtitle" style={{ margin: '12px 0 4px' }}>
                 pero como te amo <b>demasiado</b>, te regalo <b>3 vidas más</b> 🥹
               </p>
-              <p className="hand">(y las que necesites, mi amor)</p>
+              <p className="hand">(y las que necesites, mi amorcito)</p>
               <div style={{ margin: '14px 0' }}>
                 <Hearts lives={3} />
               </div>

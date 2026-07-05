@@ -29,7 +29,7 @@ export default function Ticket({ onReplay }) {
         animate={{ y: 0 }}
         style={{ fontSize: '2rem' }}
       >
-        ¡GANASTE, mi amor! 🏆💕
+        ¡GANASTE, mi amorcito! 🏆💕
       </motion.h1>
 
       <FerrisWheel size={230} />

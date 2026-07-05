@@ -25,16 +25,7 @@ export default function Intro({ onYes }) {
           (spoiler: hay premio sorpresa al final 🎁)
         </p>
 
-        <div
-          style={{
-            display: 'flex',
-            gap: 14,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 26,
-            flexWrap: 'wrap',
-          }}
-        >
+        <div style={{ marginTop: 26 }}>
           <motion.button
             className="btn-primary"
             onClick={onYes}
